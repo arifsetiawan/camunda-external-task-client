@@ -10,22 +10,22 @@ See https://medium.com/@arifsetiawan/my-journey-with-camunda-toc-3030da004511
 1. Run cron to fetch tasks
 
 ```
-    c := cron.New()
+c := cron.New()
 
-	availableLeaveDays := &camunda.FetchAndLock{
-		WorkerID: "worker1",
-		MaxTasks: 1,
-		Topics: []camunda.Topic{
-			camunda.Topic{
-				Name:         "available-leave-days",
-				LockDuration: 10000,
-			},
-		},
-	}
+availableLeaveDays := &camunda.FetchAndLock{
+    WorkerID: "worker1",
+    MaxTasks: 1,
+    Topics: []camunda.Topic{
+        camunda.Topic{
+            Name:         "available-leave-days",
+            LockDuration: 10000,
+        },
+    },
+}
 
-	c.AddFunc("@every 5s", call(client, availableLeaveDays, handlers.AvailableLeaveDaysHandler))
+c.AddFunc("@every 5s", call(client, availableLeaveDays, handlers.AvailableLeaveDaysHandler))
 
-    c.Start()
+c.Start()
 ```
 
 2. Task handler
