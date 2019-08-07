@@ -5,6 +5,8 @@ Example how to handle Camunda external task with Golang
 
 See https://medium.com/@arifsetiawan/my-journey-with-camunda-toc-3030da004511
 
+This is work in progress.
+
 ## How it works
 
 1. Run cron to fetch tasks
